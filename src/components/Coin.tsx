@@ -40,7 +40,7 @@ export const Coin: React.FC<CoinProps> = ({marketCoin}) => {
 
   return (
     <Pressable
-      style={tw`flex flex-row pt-8 p-3 pl-6 pr-6 border-b-2 rounded-2xl border-gray-700 bg-black mx-2`}>
+      style={tw`flex flex-row pt-8 p-3 px-6 border-b-2 rounded-2xl border-gray-700 bg-black mx-2`}>
       <Image
         style={tw`h-10 w-10 mr-4 self-center`}
         source={{

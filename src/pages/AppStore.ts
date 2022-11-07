@@ -1,4 +1,4 @@
-import {action, makeObservable, observable} from 'mobx';
+import {action, makeObservable, observable, runInAction} from 'mobx';
 import {CoinMarketModel, ICoinMarketModel} from '../models/CoinMarketModel';
 import {getMarketData} from '../Service/Repository';
 import {parseCoinData} from '../utils';
@@ -44,7 +44,9 @@ class AppStore {
         marketList.push(coinMarketModel);
       });
 
-      this.marketDataList = marketList;
+      runInAction(() => {
+        this.marketDataList = marketList;
+      });
     }
 
     this.changeIsDataLoadingState();
@@ -63,7 +65,10 @@ class AppStore {
         const coinMarketModel = parseCoinData(coin);
         marketList.push(coinMarketModel);
       });
-      this.marketDataList.push(...marketList);
+
+      runInAction(() => {
+        this.marketDataList.push(...marketList);
+      });
       this.changePaginationDataLoadingState();
     }
   }

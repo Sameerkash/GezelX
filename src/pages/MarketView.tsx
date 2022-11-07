@@ -3,7 +3,6 @@ import React, {useContext, useEffect} from 'react';
 import {
   ActivityIndicator,
   FlatList,
-  RefreshControl,
   Text,
   View,
 } from 'react-native';
@@ -27,10 +26,12 @@ const MarketView: React.FC<MarketViewProps> = () => {
 
   if (appStore.isDataLoading) {
     return (
-      <ActivityIndicator
-        color="white"
-        style={{marginTop: 30, width: 30, height: 30}}
-      />
+      <View style={tw`flex flex-col justify-center items-center`}>
+        <ActivityIndicator
+          color="white"
+          style={{marginTop: 30, width: 30, height: 30}}
+        />
+      </View>
     );
   }
 
